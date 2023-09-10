@@ -137,6 +137,20 @@ Adding CSS to an HTML file
         - Not usually recommended because it can get messy and cause a lot of unnecessary repetition.
         - This method overrides the other 2 methods, which can have its advantages but also generate unexpected results.
     
+CSS - The Cascade
+This determines which rule gets applied to the HTML based on different factors (including browser) and hierarchy of CSS declarations.
+
+More specific declarations > less specific ones (i.e. Inline styles over internal/external)
+
+Selectors specificity will be the tie-breaker in case of conflicting declarations being applied to the same element. 
+    - ID = most specific
+    - Class = beats type selectors
+    - Type
+
+If a declaration has more selectors, it's more specific so it takes precedent over less specific ones.
+
+
+
 
 
 
