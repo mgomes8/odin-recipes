@@ -149,12 +149,56 @@ Selectors specificity will be the tie-breaker in case of conflicting declaration
 
 If a declaration has more selectors, it's more specific so it takes precedent over less specific ones.
 
+The CCS Box Model
+In the standard box model, if you give a box an inline-size and a block-size (or width and a height) attributes, this defines the inline-size and block-size (width and height in horizontal languages) of the content box. Any padding and border is then added to those dimensions to get the total size taken up by the box (see image below).
 
+The CSS box model as a whole applies to block boxes and defines how the different parts of a box — margin, border, padding, and content — work together to create a box that you can see on a page. Inline boxes use just some of the behavior defined in the box model.
+- Content box: The area where your content is displayed; size it using properties like inline-size and block-size or width and height.
+- Padding: inner distance between the box and the content
+- Border: border added between the padding and the margin
+    - Standard model: border adds px between content and margin
+    - Alternative model: takes size from content
+- Margin: outer distance between box and page margins (margin: one value = all sides // two values = top+bottom, left+right)
+    Between two blocks:
+    - Two positive margins will combine to become one margin. Its size will be equal to the largest individual margin.
+    - Two negative margins will collapse and the smallest (furthest from zero) value will be used.
+    - If one margin is negative, its value will be subtracted from the total. 
 
+Outer Display Types: how boxes will behave 
+BLOCK 
+    - The box will break onto a new line.
+    - The width and height properties are respected.
+    - Padding, margin and border will cause other elements to be pushed away from the box.
+    - If width is not specified, the box will extend in the inline direction to fill the space available in its container (100% of the container)
+INLINE
+    - The box will not break onto a new line.
+    - The width and height properties will not apply.
+    - Top and bottom padding, margins, and borders will apply but will not cause other inline boxes to move away from the box.
+    - Left and right padding, margins, and borders will apply and will cause other inline boxes to move away from the box.
 
+Inner Display Types: dictates how elements inside the box are laid out
+I.e. flex, grid etc
 
+The Alternative CSS Box Model
+In the alternative box model, any width is the width of the visible box on the page. The content area width is that width minus the width for the padding and border (see image below). No need to add up the border and padding to get the real size of the box.
 
+To use the alternative box model for all of your elements (which is a common choice among developers), set the box-sizing property on the <html> element and set all other elements to inherit that value:
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
+Tag	Description
+<div>	Defines a section in a document (block-level)
+<span>	Defines a section in a document (inline)
+
+Compared to display: inline, the major difference is that inline-block allows to set a width and height on the element. Also, with display: inline, top and bottom margins & paddings are not respected, and with display: inline-block they are.
+
+Now, the difference between display: inline-block and display: block is that, with display: block, a line break happens after the element, so a block element doesn’t sit next to other elements.
  
     
 
